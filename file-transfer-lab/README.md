@@ -1,9 +1,12 @@
+Andreas Maeurer
+10/3/2018
+OS Fall 2018
+
 fileClient.py is taken mostly from framedClient.py
 fileServer.py is taken mostly from framedForkServer.py
 the lib and stammering proxy directories are copied verbatim from framedEcho
 
-
-References:
+[References:]
 https://docs.python.org/2/library/socket.html
 https://docs.python.org/2/howto/sockets.html#socket-howto
 https://docs.python.org/3/library/socket.html
@@ -19,3 +22,22 @@ https://codereview.stackexchange.com/questions/197462/large-file-transmission-ov
 https://stackoverflow.com/questions/9382045/send-a-file-through-sockets-in-python
 https://stackoverflow.com/questions/11410963/python-socket-buffering-message-framing
 https://stackoverflow.com/questions/9382045/send-a-file-through-sockets-in-python
+
+[Collaboration:]
+I discussed framing and socket programming with Freddy Garcia.
+
+[Usage:]
+open a terminal,
+navigate to the stammer-proxy directory 
+and run the stammering proxy:
+./stammerProxy.py
+
+open another terminal
+navigate to the file-transfer-lab directory
+and run the fileServer:
+./fileServer.py
+
+open yet another terminal 
+navigate to the file-transfer-lab directory
+and run the fileServer:
+./fileServer.py

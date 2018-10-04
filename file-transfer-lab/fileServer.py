@@ -1,13 +1,13 @@
 #! /usr/bin/env python3
 
-"""This code is mostly taken from framedForkServer.py from the nets-tcp-framed-echo repository
+"""taken from framedForkServer.py from the nets-tcp-framed-echo repository
 """
 import sys, os, socket
 import struct
 sys.path.append("../lib")       # for params
 import params
 
-FILE_BUFFER_SIZE = 524288
+FILE_BUFFER_SIZE = 100
 
 switchesVarDefaults = (
 	(('-l', '--listenPort') ,'listenPort', 50001),
@@ -62,14 +62,6 @@ while True:
 				print('File transmission completed.')			
 			sock.shutdown(socket.SHUT_RD)			
 			lsock.close()			
-			print('Server shutdown.')
-			
+			print('Server shutdown.')			
 			sys.exit(0) #or not ?
-			"""
-			if debug: print("rec'd: ", payload)
-			if not payload:								#this needs attention
-				if debug: print("child exiting")
-				sys.exit(0)
-			payload += b"!"             # make emphatic!
-			framedSend(sock, payload, debug)
-			"""
+			
