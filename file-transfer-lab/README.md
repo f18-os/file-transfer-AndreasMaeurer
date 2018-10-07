@@ -1,31 +1,3 @@
-Andreas Maeurer
-10/3/2018
-OS Fall 2018
-
-fileClient.py is taken mostly from framedClient.py
-fileServer.py is taken mostly from framedForkServer.py
-the lib and stammering proxy directories are copied verbatim from framedEcho
-
-[References:]
-https://docs.python.org/2/library/socket.html
-https://docs.python.org/2/howto/sockets.html#socket-howto
-https://docs.python.org/3/library/socket.html
-https://docs.python.org/2/howto/sockets.html
-https://pymotw.com/2/socket/tcp.html
-https://docs.python.org/3/howto/sockets.html
-https://realpython.com/python-sockets/
-https://stackoverflow.com/questions/1708835/python-socket-receive-incoming-packets-always-have-a-different-size
-http://code.activestate.com/recipes/408859/
-https://docs.python.org/3/library/socket.html
-http://intronetworks.cs.luc.edu/current/ComputerNetworks/ipv4.html
-https://codereview.stackexchange.com/questions/197462/large-file-transmission-over-socket-in-python
-https://stackoverflow.com/questions/9382045/send-a-file-through-sockets-in-python
-https://stackoverflow.com/questions/11410963/python-socket-buffering-message-framing
-https://stackoverflow.com/questions/9382045/send-a-file-through-sockets-in-python
-
-[Collaboration:]
-I discussed framing and socket programming with Freddy Garcia.
-
 [Usage:]
 open a terminal,
 navigate to the stammer-proxy directory 
@@ -41,3 +13,15 @@ open yet another terminal
 navigate to the file-transfer-lab directory
 and run the fileServer:
 ./fileServer.py
+
+
+[Your assignment is to write fileClient.py and fileServer.py which can transfer a file ("put") from a client to the server. Your programs should:]
+
+    be in the file-transfer-lab subdir 							
+    work with and without the proxy								
+    support multiple clients simultaneously using fork()
+    gracefully deal with scenarios such as:
+        zero length files
+        user attempts to transmit a file which does not exist
+        file already exists on the server
+        the client or server unexpectedly disconnect

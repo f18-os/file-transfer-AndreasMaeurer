@@ -1,8 +1,11 @@
 import re
 
-"""This code is mostly taken from framedSock.py from the nets-tcp-framed-echo repository
 """
-#in hier fuer Datei blah blah
+This code is mostly taken from framedSock.py from the nets-tcp-framed-echo repository
+
+it's used in fileClient.py
+"""
+
 def framedSend(sock, payload, debug=0):
      if debug: print("framedSend: sending %d byte message" % len(payload))
      #change string to file

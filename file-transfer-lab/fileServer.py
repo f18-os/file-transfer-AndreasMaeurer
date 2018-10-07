@@ -27,17 +27,19 @@ bindAddr = ("127.0.0.1", listenPort)
 lsock.bind(bindAddr)
 lsock.listen(5)
 print("listening on:", bindAddr)
+count = 0
 
 while True:
 	sock, addr = lsock.accept()
+	count = count+1
 	
 	from framedSock import framedSend, framedReceive
 	from aux import readn
 	
 	if not os.fork():
 		print("new child process handling connection from", addr)
-		while True:
-			
+		
+		while True:			
 			size_buff = readn(sock, 4)
 			if size_buff == '':
 				print('Failed to receive file size.', file=sys.stderr)
@@ -46,8 +48,8 @@ while True:
 			
 			size_unpacked = struct.unpack('!I', size_buff)
 			file_size = size_unpacked[0]
-			print('Will receive file of size', file_size, 'bytes.')
-			filename = 'file001.jpg'
+			print('Will receive file of size', file_size, 'bytes.')			
+			filename = 'file00' + str(count) + '.jpg'		
 			with open(filename, 'wb') as file_handle:
 				while file_size > 0:
 					buffer = sock.recv(FILE_BUFFER_SIZE)	#recv(buflen[, flags]) -- receive data  (from python help() socket)
@@ -61,7 +63,6 @@ while True:
 					print('Failed to receive file,', file_size, 'more bytes to go.')			
 				print('File transmission completed.')			
 			sock.shutdown(socket.SHUT_RD)			
-			lsock.close()			
-			print('Server shutdown.')			
+			lsock.close()						
 			sys.exit(0) #or not ?
 			
