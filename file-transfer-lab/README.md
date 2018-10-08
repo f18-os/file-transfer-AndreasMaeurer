@@ -15,6 +15,8 @@ and run the fileServer:
 ./fileServer.py
 
 
+[It works with or without the stammering proxy]
+
 [Your assignment is to write fileClient.py and fileServer.py which can transfer a file ("put") from a client to the server. Your programs should:]
 
     be in the file-transfer-lab subdir 							

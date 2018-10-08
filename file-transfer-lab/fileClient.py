@@ -12,7 +12,29 @@ import re
 sys.path.append("../lib")       # for params
 import params
 from framedSock import framedSend, framedReceive
+import argparse
 
+#info about input arguments get opt and more from:
+#https://www.tutorialspoint.com/python/python_command_line_arguments.htm
+#and:
+#https://codereview.stackexchange.com/questions/197462/large-file-transmission-over-socket-in-python
+#info about argparse from:
+#https://www.youtube.com/watch?v=cdblJqEUDNo
+#and:
+#https://docs.python.org/3/library/argparse.html
+
+#trying to figure out parameters to send the filename
+"""
+parser = argparse.ArgumentParser(description='Usage: fileClient.py <FILENAME> <SERVER IP> <PORT>')
+parser.add_argument('filename', type=str, help='Source file to send')
+parser.add_argument('serverIP', type=str, help='Server address')				#the ip address is a number separated by dots. does that make it a string?
+parser.add_argument('port', type=str, help='Server port number')
+args = parser.parse_args()
+
+print(args.filename)
+print(args.serverIP)
+print(args.port)
+"""
 FILE_BUFFER_SIZE = 100
 
 switchesVarDefaults = (
@@ -58,9 +80,15 @@ if s is None:
     print('could not open socket')
     sys.exit(1)
 
+#For Debugging:
 source_file = 'HelloWikipediaCropped.jpg'
 server_addr = '127.0.0.1'	
 server_port = '50000'   # stammerProxy listens on 50000			#   forwards to 127.0.0.1:50001
+
+#also here trying to figure out how to send the filename from Client to Server.
+#source_file = args.filename
+#server_addr = args.serverIP
+#server_port = args.port
 
 file_size = os.path.getsize(source_file)
 print('Sending file size to remote server.')
